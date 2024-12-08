@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "comtacts"
+version = "0.1.0"
+authors = [
+  { name = "Rishi Kumar", email = "rekumar@icloud.com" },
+]
+description = "A tool to remember and detect communication ports using hardware identifiers"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pyserial>=3.5",
+    "click>=8.0",
+]
+
+[project.scripts]
+comtacts = "comtacts.cli:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/comtacts"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
