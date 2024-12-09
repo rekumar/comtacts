@@ -20,6 +20,13 @@ def test_add_port(mock_devices, temp_storage_dir):
         assert saved_data["vid"] == "0403"
         assert saved_data["pid"] == "6001"
         assert saved_data["serial_number"] == "A12345"
+        
+    #test different strings for port name
+    with patch('serial.tools.list_ports.comports', return_value=mock_devices):
+        add_port("test device", "COM4") #spaces
+        
+        port = get_port("test device") #spaces
+        assert port == "COM4"
 
 def test_add_port_not_found(mock_devices, temp_storage_dir):
     with patch('serial.tools.list_ports.comports', return_value=mock_devices):

@@ -1,4 +1,4 @@
-# COMtacts
+![COMtacts](./assets/logo.png)
 
 This is a tool to remember and detect communication ports using hardware identifiers.
 
@@ -12,11 +12,17 @@ Lets assume you've plugged in a USB device and you know it is currently at port 
 comtacts add --name "My USB Device" --port "COM3"
 ```
 
+To overwrite an existing contact:
+
+```bash
+comtacts add --name "My USB Device" --port "COM3" --overwrite
+```
+
 or if you're in python already:
 
 ```python
-from comtacts import add
-add(name="My USB Device", port="COM3")
+from comtacts import add_port
+add_port(name="My USB Device", port="COM3", overwrite=False) # or overwrite=True, up to you
 ```
 
 ### Get the port of a contact
@@ -48,7 +54,7 @@ ser = Serial(
 ### List all contacts
 
 ```bash
-comtacts all_contacts
+comtacts all
 ```
 
 or if you're in python already:
@@ -56,6 +62,12 @@ or if you're in python already:
 ```python
 from comtacts import all_contacts
 all_contacts()
+```
+
+### See where contacts are stored
+
+```bash
+comtacts where
 ```
 
 ### Advanced usage -- finding a contact using hardware identifiers
